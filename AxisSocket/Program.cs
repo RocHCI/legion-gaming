@@ -1,76 +1,73 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Text;
-using System.Text.RegularExpressions;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
+using LibUsbDotNet.Info;
 
 namespace AxisSocket
 {
     internal class AxisSocket
     {
-        public static UsbDevice MyUsbDevice;
+        public static UsbDevice[] devices; // ignore warning; this is definitely used
+        public static UsbDevice[] controllers;
+        public static int[] ports = { 7698, 7698, 7698, 7698 };
+        //public static int[] ports = { 27015, 4242, 4343, 4444 };
+        public static Socket[] sockets = new Socket[4];
 
-        #region SET YOUR USB Vendor and Product ID!
+        // mm / Legion
+        public static int mmPort = 7698;
 
-        public static UsbDeviceFinder MyUsbFinder = new UsbDeviceFinder(0x054c, 0x0268);
+        // vmulti is a server listening on this port
+        public static int vmultiPort = 27015;
 
-        #endregion
+        // 
+        public static int[] overlayPorts = { 4141, 4242, 4343, 4444 };
 
+        /**
+         * Finds all controllers, connects them to their own sockets, and sends input over those sockets.
+         */
         public static void Main(string[] args)
         {
             ErrorCode ec = ErrorCode.None;
-
+            controllers = getControllers();
             try
             {
-                // Find and open the usb device.
-                MyUsbDevice = UsbDevice.OpenUsbDevice(MyUsbFinder);
-
-                // If the device is open and ready
-                if (MyUsbDevice == null) throw new Exception("Device Not Found.");
-
-                // If this is a "whole" usb device (libusb-win32, linux libusb)
-                // it will have an IUsbDevice interface. If not (WinUSB) the 
-                // variable will be null indicating this is an interface of a 
-                // device.
-                IUsbDevice wholeUsbDevice = MyUsbDevice as IUsbDevice;
-                if (!ReferenceEquals(wholeUsbDevice, null))
+                for (int i = 0; i < controllers.Length; i++)
                 {
-                    // This is a "whole" USB device. Before it can be used, 
-                    // the desired configuration and interface must be selected.
+                    if (controllers[i] == null) break;
+                    UsbDevice controller = controllers[i]; // already opened
+                    IUsbDevice device = controller as IUsbDevice;
+                    device.SetConfiguration(1);
+                    device.ClaimInterface(0);
 
-                    // Select config #1
-                    wholeUsbDevice.SetConfiguration(1);
-
-                    // Claim interface #0.
-                    wholeUsbDevice.ClaimInterface(0);
+                    // setup this controller's socket
+                    IPAddress ip = Dns.GetHostEntry("localhost").AddressList[1]; // won't always be list[1]
+                    IPEndPoint ipe = new IPEndPoint(ip, ports[i]);
+                    Socket s = new Socket(ipe.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                    s.Connect(ipe);
+                    sockets[i] = s;
+                    Console.WriteLine("Socket " + i + " connected?: " + s.Connected);
                 }
-
-                IPAddress ip = Dns.GetHostEntry("localhost").AddressList[1]; // won't always be list[1]
-                IPEndPoint ipe = new IPEndPoint(ip, 4242);
-                Socket s = new Socket(ipe.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                s.Connect(ipe);
-                Console.WriteLine("Socket connected?: " + s.Connected);
-
+              
                 while (true)
                 {
-                    byte[] status_packet = new byte[49];
-                    int len = 0;
-                    UsbSetupPacket setup = new UsbSetupPacket(0xa1, 0x01, 0x0101, 0, 0x31); // magic values
-                    MyUsbDevice.ControlTransfer(ref setup, status_packet, 49, out len);
-                    for (int i = 0; i < 49; i++)
+                    for (int i = 0; i < controllers.Length; i++)
                     {
-                        Console.Write(status_packet[i] + " ");
+                        if (controllers[i] == null) break;
+                        byte[] status_packet = new byte[49];
+                        int len = 0;
+                        UsbSetupPacket setup = new UsbSetupPacket(0xa1, 0x01, 0x0101, 0, 0x31); // magic values
+                        controllers[i].ControlTransfer(ref setup, status_packet, 49, out len);
+
+                        // send to UI
+                        byte[] rearranged = rearrangeStatus(status_packet);
+                        sockets[i].Send(rearranged, 12, 0);
                     }
-                    Console.WriteLine();
 
-                    // send to UI
-                    byte[] rearranged = rearrangeStatus(status_packet);
-                    s.Send(rearranged, 12, 0);
-
-                    Thread.Sleep(500);
+                    Thread.Sleep(50);
                 }
             }
             catch (Exception ex)
@@ -78,38 +75,62 @@ namespace AxisSocket
                 Console.WriteLine();
                 Console.WriteLine((ec != ErrorCode.None ? ec + ":" : String.Empty) + ex.Message);
             }
-            finally
+            finally // cleanup
             {
-                if (MyUsbDevice != null)
-                {
-                    if (MyUsbDevice.IsOpen)
+                for(int i = 0; i < controllers.Length; i++){
+                    if (controllers[i] != null)
                     {
-                        // If this is a "whole" usb device (libusb-win32, linux libusb-1.0)
-                        // it exposes an IUsbDevice interface. If not (WinUSB) the 
-                        // 'wholeUsbDevice' variable will be null indicating this is 
-                        // an interface of a device; it does not require or support 
-                        // configuration and interface selection.
-                        IUsbDevice wholeUsbDevice = MyUsbDevice as IUsbDevice;
-                        if (!ReferenceEquals(wholeUsbDevice, null))
+                        UsbDevice controller = controllers[i];
+                        if (controller != null && controller.IsOpen)
                         {
-                            // Release interface #0.
-                            wholeUsbDevice.ReleaseInterface(0);
+                            IUsbDevice device = controller as IUsbDevice;
+                            device.ReleaseInterface(0);
+                            controller.Close();
                         }
-
-                        MyUsbDevice.Close();
                     }
-                    MyUsbDevice = null;
-
-                    // Free usb resources
-                    UsbDevice.Exit();
-
                 }
-
-                // Wait for user input..
+                UsbDevice.Exit();
                 Console.ReadKey();
             }
         }
 
+        /**
+         * Finds all of the connected Playstation controllers.
+         */
+        public static UsbDevice[] getControllers()
+        {
+            UsbDevice[] controllers = new UsbDevice[4];
+            UsbDevice[] devices = new UsbDevice[20];
+
+            UsbRegDeviceList allDevices = UsbDevice.AllDevices;
+            int i = 0;
+            foreach (UsbRegistry usbRegistry in allDevices)
+            {
+                if (usbRegistry.Open(out devices[i]))
+                {
+                    if (devices[i].Info.ToString().Contains("PLAYSTATION"))
+                    {
+                        int index = 0;
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (controllers[j] == null)
+                            {
+                                index = j;
+                                break;
+                            }
+                        }
+                        controllers[index] = devices[i];
+                    }
+                }
+                i++;
+            }
+
+            return controllers;
+        }
+
+        /**
+         * Rearranges the data from PS3 controller so that it fits our format.
+         */
         public static byte[] rearrangeStatus(byte[] s)
         {
             byte[] ns = new byte[12];
@@ -133,7 +154,7 @@ namespace AxisSocket
             int up = (s[2] == 0x10 ? 1 : 0) << 1;
             int down = (s[2] == 0x40 ? 1 : 0) << 0;
 
-            ns[8] = (byte) (L1 & L2 & L3 & R1 & R2 & R3 & up & down);
+            ns[8] = (byte) (L1 | L2 | L3 | R1 | R2 | R3 | up | down);
 
             byte left = (byte) ((s[2] == 0x80 ? 1 : 0) << 7);
             byte right = (byte) ((s[2] == 0x20 ? 1 : 0) << 6);
@@ -145,10 +166,12 @@ namespace AxisSocket
             int start = (byte) ((s[2] == 0x08 ? 1 : 0) << 1);
             int select = (byte) ((s[2] == 0x01 ? 1 : 0) << 0);
 
-            ns[9] = (byte)(left & right & square & triangle & circle & cross & start & select);
+            ns[9] = (byte)(left | right | square | triangle | circle | cross | start | select);
 
             ns[10] = s[4]; // PS button
             ns[11] = 0;
+
+            Console.WriteLine(s[6] + ", " + s[7] + "," + s[8] + "," + s[9]);
 
             return ns;
         }
