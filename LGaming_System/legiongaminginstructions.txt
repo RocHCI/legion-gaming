@@ -1,0 +1,146 @@
+File location:
+ https://roc.cs.rochester.edu/svn/code/lgaming
+
+
+
+Order: vmulti -> middle man -> overlay -> usb (axissocket)
+
+To run (Script):
+	- Double click the "run_wegame.bat" file on the desktop
+	- Open the overlay solution and run it using the debugger as before
+	- Select the open DOS/CMD window that has "press any key to continue", then press any key to start the whole system.
+
+To run (Manual):
+	vmulti:
+		Open a new PowerShell window
+		D:\legtion-gaming\vmulti\vmulti\Debug
+		.\testvmulti.exe /joystick
+
+	middle man:
+		Open a new PowerShell window
+		D:\legion-gaming\middleman
+		java -jar .\middleman.jar
+
+	overlay:
+		Open VS2010
+		Run D:\legion-gaming\ControllerOverlay\ControllerOverlay.sln (Use F5)
+
+	usb:
+		Open VS2010
+		Run D:\legion-gaming\AxisSocketAnna\AxisSocket.sln
+
+Control schemes:
+	noop - Only Player 1 controls the whole time.
+	seq - Control cycles through all players every 10 seconds, i.e. Player 1 -> Player 2 -> Player 3 -> Player 4 -> Player 1 ...
+	random - A different random person controls the game every 10 seconds.
+	randomlong - A different random person controls the game every 30 seconds.
+	mob - Everyone controls the game at the same time.
+	multi - 6arm
+
+Not-in-use schemes:
+	local
+	legion
+	pass	
+
+To change control scheme (Script):
+	- Right click the "run_wegame.bat" file on the desktop and select "Edit"
+	- Change "noop" in "START java -jar D:\legion-gaming\middleman\Middleman.jar noop" to whichever scheme you wish to use.
+
+To change control scheme (Manual):
+	- When running middle man, instead of doing "java -jar .\middleman.jar", use "java -jar .\middleman.jar <control scheme>", 
+		where <control scheme> is one of the control schemes mentioned above
+
+-------------------------------------------------------------------------
+
+Test Format
+
+Inital run: numControllers controllerA controllerAButtons ... controllerN controllerNButtons
+During run: controllerA controllerAButtons ... controllerN controllerNButtons
+
+controllerButtons Format:
+(Seperate buttons by semicolons.)
+Left Analog X # ->lx#
+Left Analog Y # ->ly#
+Right Analog X # ->rx#
+Right Analog y # ->ry#
+L1->l1
+L2->l2
+L3->l3
+R1->r1
+R2->r2
+R3->r3
+Up->u or up
+Down->d or down
+Left->l or left
+Right->r or right
+Square->sqr or square
+Triangle->tri or triangle
+Circle->circ or circle
+X->x or cross
+Start->st or start
+Select->se or select
+
+-------------------------------------------------------------------------
+
+Connections:
+
+usb -> overlay
+	Ports: 4141, 4242, 4343, 4444
+	Format: (Byte Array)
+		Sent:
+			0,1 Left Analog x
+			2,3 Left Analog y
+			4,5 Right Analog x
+			6,7 Right Analaog y
+			8 L1, L2, L3, R1, R2, R3, UP, DOWN
+			9 LEFT, RIGHT, SQR, TRI, CIR, X, START, SELECT
+			10 PS
+			11 0 (padding)
+		Recieved:
+			1,0 Left Analog x
+			3,2 Left Analog y
+			5,4 Right Analog x
+			7,6 Right Analaog y
+			8 DOWN, UP, R3, R2, R1, L3, L2, L1
+			9 SELECT, START, X, CIR, TRI, SQR, RIGHT, LEFT
+			10 PS
+			11 0 (padding)
+
+overlay -> middle man
+	Port: 7698
+	Format: (Byte Array) usb -> overlay format with additional byte at end for player ID (0-3):
+		0,1 Left Analog x
+		2,3 Left Analog y
+		4,5 Right Analog x
+		6,7 Right Analaog y
+		8 L1, L2, L3, R1, R2, R3, UP, DOWN
+		9 LEFT, RIGHT, SQR, TRI, CIR, X, START, SELECT
+		10 PS
+		11 0 (padding)
+		12 playerID
+
+middle man -> overlay
+	Port: 7777
+	Format: (String) "<leaderID>;<percent of max leader time player has remained leader>;<can a new person become leader>!"
+		<.> are numbers:
+			leaderID is an int between 0 and 3
+			percent is a double with up to four decimal places
+			the last value is 1 if we can switch and 0 if we can't
+
+middle man -> vmulti
+	Port: 27015
+	Format: First 12 bytes of overlay -> middle man
+
+-------------------------------------------------------------------------
+
+
+Middle man location: http://roc.cs.rochester.edu/hosting/Middleman.jar
+
+
+-------------------------------------------------------------------------
+
+Output format:
+vmulti: 0, Left Analog x, 0, Left Analog y, 0, Right Analog x, 0, Right Analog y, 0, Button pad,
+
+
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="vmulticlient">
+</Property><Property Name="Solution File" Value="S:\Users\kim\Desktop\vmulti\vmulticlient.sln">
+</Property><Property Name="Date" Value="Wednesday, March 28, 2012">
+</Property><Property Name="Time" Value="7:24am">
+</Property></Properties><Event ErrorLevel="0" Project="vmulticlient" Source="client\vmulticlient.vcproj" Description="Converting project file 'S:\Users\kim\Desktop\vmulti\client\vmulticlient.vcproj'.">
+</Event><Event ErrorLevel="1" Project="vmulticlient" Source="client\vmulticlient.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="vmulticlient" Source="client\vmulticlient.vcproj" Description="Done converting to new project file 'S:\Users\kim\Desktop\vmulti\client\vmulticlient.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="vmulticlient" Source="client\vmulticlient.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="testvmulti" Source="test\testvmulti.vcproj" Description="Converting project file 'S:\Users\kim\Desktop\vmulti\test\testvmulti.vcproj'.">
+</Event><Event ErrorLevel="1" Project="testvmulti" Source="test\testvmulti.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="testvmulti" Source="test\testvmulti.vcproj" Description="Done converting to new project file 'S:\Users\kim\Desktop\vmulti\test\testvmulti.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="testvmulti" Source="test\testvmulti.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="vmulticlient.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="vmulticlient.sln" Description="Converted">
+</Event></UpgradeLog>

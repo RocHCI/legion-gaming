@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/hidmapper
+END
+sources
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/hidmapper/sources
+END
+hidkmdf.c
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/hidmapper/hidkmdf.c
+END
+hidkmdf.rc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/hidmapper/hidkmdf.rc
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/hidmapper/makefile
+END

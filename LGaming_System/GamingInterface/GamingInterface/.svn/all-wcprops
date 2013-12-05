@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/code/!svn/ver/390/lgaming/GamingInterface/GamingInterface
+END
+Button.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/code/!svn/ver/88/lgaming/GamingInterface/GamingInterface/Button.cs
+END
+AsyncUserToken.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/code/!svn/ver/88/lgaming/GamingInterface/GamingInterface/AsyncUserToken.cs
+END
+GamingInterface.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/code/!svn/ver/90/lgaming/GamingInterface/GamingInterface/GamingInterface.csproj
+END
+MainInterface.resx
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/code/!svn/ver/88/lgaming/GamingInterface/GamingInterface/MainInterface.resx
+END
+Player.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/code/!svn/ver/382/lgaming/GamingInterface/GamingInterface/Player.cs
+END
+SocketAsyncEventArgsPool.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/code/!svn/ver/88/lgaming/GamingInterface/GamingInterface/SocketAsyncEventArgsPool.cs
+END
+MMServer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/code/!svn/ver/383/lgaming/GamingInterface/GamingInterface/MMServer.cs
+END
+ButtonAllocationPanel.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/code/!svn/ver/90/lgaming/GamingInterface/GamingInterface/ButtonAllocationPanel.cs
+END
+PlayerInputServer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/389/lgaming/GamingInterface/GamingInterface/PlayerInputServer.cs
+END
+MainInterface.Designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/code/!svn/ver/140/lgaming/GamingInterface/GamingInterface/MainInterface.Designer.cs
+END
+BufferManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/code/!svn/ver/88/lgaming/GamingInterface/GamingInterface/BufferManager.cs
+END
+MainInterface.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/code/!svn/ver/388/lgaming/GamingInterface/GamingInterface/MainInterface.cs
+END
+ButtonAllocationControllerPanel.cs
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/code/!svn/ver/91/lgaming/GamingInterface/GamingInterface/ButtonAllocationControllerPanel.cs
+END
+Program.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/code/!svn/ver/382/lgaming/GamingInterface/GamingInterface/Program.cs
+END
+MMClient.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/code/!svn/ver/123/lgaming/GamingInterface/GamingInterface/MMClient.cs
+END

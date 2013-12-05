@@ -1,0 +1,6 @@
+D:\legion-gaming\AxisSocketAnna\bin\Release\AxisSocket.exe
+D:\legion-gaming\AxisSocketAnna\bin\Release\AxisSocket.pdb
+D:\legion-gaming\AxisSocketAnna\bin\Release\LibUsbDotNet.dll
+D:\legion-gaming\AxisSocketAnna\obj\x86\Release\ResolveAssemblyReference.cache
+D:\legion-gaming\AxisSocketAnna\obj\x86\Release\AxisSocket.exe
+D:\legion-gaming\AxisSocketAnna\obj\x86\Release\AxisSocket.pdb

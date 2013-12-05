@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/driver_install
+END
+ROCHCI Certificate.cer
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/driver_install/ROCHCI%20Certificate.cer
+END
+hidkmdf.sys
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/driver_install/hidkmdf.sys
+END
+WdfCoInstaller01009.dll
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/driver_install/WdfCoInstaller01009.dll
+END
+vmulti.inf
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/driver_install/vmulti.inf
+END
+vmulti.sys
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/driver_install/vmulti.sys
+END
+devcon.exe
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/driver_install/devcon.exe
+END

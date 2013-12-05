@@ -1,0 +1,26 @@
+﻿Build started 5/18/2012 2:51:12 PM.
+     1>Project "D:\legion-gaming\vmulti\vmulti\test\testvmulti.vcxproj" on node 3 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\testvmulti.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Release\testvmulti.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\inc /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt testvmulti.c
+         testvmulti.c
+     1>testvmulti.c(132): warning C4101: 'iSendResult' : unreferenced local variable
+       Link:
+         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\legion-gaming\vmulti\vmulti\Release\testvmulti.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\WinDDK\7600.16385.1\lib\wxp\i386 hid.lib setupapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\testvmulti.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"D:\legion-gaming\vmulti\vmulti\Release\testvmulti.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\legion-gaming\vmulti\vmulti\Release\testvmulti.lib" /MACHINE:X86 Release\testvmulti.obj
+         "D:\legion-gaming\vmulti\vmulti\Release\vmulticlient.lib"
+         Generating code
+         Finished generating code
+         testvmulti.vcxproj -> D:\legion-gaming\vmulti\vmulti\Release\testvmulti.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"D:\legion-gaming\vmulti\vmulti\Release\testvmulti.exe;#1" /manifest Release\testvmulti.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\testvmulti.unsuccessfulbuild".
+         Touching "Release\testvmulti.lastbuildstate".
+     1>Done Building Project "D:\legion-gaming\vmulti\vmulti\test\testvmulti.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.45

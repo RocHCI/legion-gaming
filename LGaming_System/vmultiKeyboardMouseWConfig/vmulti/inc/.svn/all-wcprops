@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/inc
+END
+hidport.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/inc/hidport.h
+END
+vmulticommon.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/inc/vmulticommon.h
+END
+vmulticlient.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/136/lgaming/vmultiKeyboardMouseWConfig/vmulti/inc/vmulticlient.h
+END

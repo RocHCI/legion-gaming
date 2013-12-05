@@ -1,0 +1,33 @@
+Requirements:
+Windows computer
+PS3 controllers
+	- One per player
+	Micro-USB to USB connector
+	- One per controller
+Enough USB ports
+	- One per controller
+	- Can use a USB hub if needed
+PS3 or blutooth capable computer
+
+
+Installation Instructions:
+
+1. Install vmulti (http://code.google.com/p/vmulti/).
+2. Install LibUsbDotNet (http://sourceforge.net/projects/libusbdotnet/).
+3. Install LG ().
+4. You will need to use the libusb INFWizard to install a driver for each port.
+	a. Pair the PS3 controller with either a PS3 or a blutooth capable computer.
+	b. Connect a PS3 controller to the port using the Micro-USB to USB connector.
+	c. Start the INFWizard (Inf-Wizard). You should be at the Information page.
+	d. Press "Next >". You should now be at the Device Selection page.
+	e. Select the controller from the list. The description should be "PLAYSTATION(R)3 Controller".
+	f. Press "Next >". You should be at the Device Configuration page.
+	g. Press "Next >".
+	h. 	- If you are using INFWizard for the first time, select a folder you want to save the inf file to.
+		- Otherwise, you will be prompted to select a folder and filename for the inf file. Go ahead and select one.
+	i. You should now be at the Information page. Press "Install Now..".
+	j. Windows may warn you about installing the driver. Just tell it to go ahead and install.
+	k. You should see a pop-up that says "Installation successful. Press "OK".
+	k. The driver should now be installed. Run testUSB.exe to check the list of devices that LG can see.
+5. Install or run a game of your choice.
+6. Run run_wegame.bat by double clicking the file.

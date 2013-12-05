@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/code/!svn/ver/390/lgaming/middleman/gaming_workspace/src
+END
+VoteMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/code/!svn/ver/385/lgaming/middleman/gaming_workspace/src/VoteMediator.java
+END
+ControllerInput.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/code/!svn/ver/385/lgaming/middleman/gaming_workspace/src/ControllerInput.java
+END
+SeqLeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/code/!svn/ver/368/lgaming/middleman/gaming_workspace/src/SeqLeader.java
+END
+SixArmLeaderMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/code/!svn/ver/378/lgaming/middleman/gaming_workspace/src/SixArmLeaderMediator.java
+END
+middleman.zip
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/code/!svn/ver/113/lgaming/middleman/gaming_workspace/src/middleman.zip
+END
+AnalogPair.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/code/!svn/ver/378/lgaming/middleman/gaming_workspace/src/AnalogPair.java
+END
+MultiMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/code/!svn/ver/387/lgaming/middleman/gaming_workspace/src/MultiMediator.java
+END
+SocketServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/code/!svn/ver/333/lgaming/middleman/gaming_workspace/src/SocketServer.java
+END
+LeaderMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/code/!svn/ver/387/lgaming/middleman/gaming_workspace/src/LeaderMediator.java
+END
+ParallelMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/code/!svn/ver/387/lgaming/middleman/gaming_workspace/src/ParallelMediator.java
+END
+SingleLeaderMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/code/!svn/ver/368/lgaming/middleman/gaming_workspace/src/SingleLeaderMediator.java
+END
+InputMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/code/!svn/ver/387/lgaming/middleman/gaming_workspace/src/InputMediator.java
+END
+NoopLeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/code/!svn/ver/113/lgaming/middleman/gaming_workspace/src/NoopLeader.java
+END
+MobLeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/code/!svn/ver/113/lgaming/middleman/gaming_workspace/src/MobLeader.java
+END
+Middleman.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/code/!svn/ver/367/lgaming/middleman/gaming_workspace/src/Middleman.java
+END
+LegionLeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/code/!svn/ver/390/lgaming/middleman/gaming_workspace/src/LegionLeader.java
+END
+RandomLeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/code/!svn/ver/368/lgaming/middleman/gaming_workspace/src/RandomLeader.java
+END
